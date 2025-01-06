@@ -1,0 +1,37 @@
+#!/bin/bash
+export SRCDIR=$(pwd)
+
+if [[ $(pipx list) != *"pyinstaller"* ]]; then
+  read -sp "Install dependencies (y/n)? " install
+  if [[ install == "y" ]]; then
+    pipx install pyinstaller
+  else
+    echo "Dependencies not installed. Exiting..."
+    exit 1
+  fi
+fi
+
+pyinstaller --onefile maskmaker.py
+sudo mv dist/maskmaker /usr/bin
+touch $HOME/.savedmasks.json
+echo "{}" > .savedmasks.json
+
+if [[ install == "y" ]]; then
+  read -sp "Remove dependencies (y/n)? " remove
+  if [[ remove == "y" ]]; then
+    pipx uninstall pyinstaller
+    echo "Removed dependencies."
+  else
+    echo "Dependencies not removed."
+  fi
+fi
+
+chmod +x uninstall
+read -sp "Installation complete. Delete cloned directory (y/n)?" dirdelete
+
+if [[ dirdelete == 'y' ]]; then
+  echo "Deleting cloned directory..."
+  cd ..
+  rm -rf maskmaker
+  echo "Complete."
+fi

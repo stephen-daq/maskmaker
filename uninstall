@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo rm /usr/bin/maskmaker
+rm $HOME/.savedmasks.json
+
+cd ..
+rm -rf maskmaker
