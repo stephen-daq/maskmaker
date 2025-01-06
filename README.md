@@ -1,4 +1,4 @@
-# C Bit Mask Maker
+# C Bitmask Maker
 ## Description
 This is a simple Python script for creating and saving bitmasks for C. The program prompts you to select which bits you would like to set and at which positions (multiple bits can be added at once). Very little error-handling is done here, but hopefully the prompts will make it clear exactly how to format your inputs. Chances are this is the one and only commit for this project, but I may add more features later (new languages, edit old bitmasks).
 
