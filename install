@@ -15,7 +15,7 @@ fi
 pyinstaller --onefile maskmaker.py
 sudo mv dist/maskmaker /usr/bin
 touch $HOME/.savedmasks.json
-echo "{}" > .savedmasks.json
+echo {} > .savedmasks.json
 
 if [[ $install == "y" ]]; then
   echo "Remove dependencies (y/n)? " 
